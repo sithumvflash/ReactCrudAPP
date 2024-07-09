@@ -4,6 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Employees from "./Employees";
 
 function Home() {
+  const handleDelete = (id) => {
+    var index = Employees.map(function (e) {
+      return e.id;
+    }).indexOf(id);
+
+    Employees.splice(index, 1);
+  };
+
   return (
     <Fragment>
       <div style={{ margin: "10rem" }}>
@@ -12,6 +20,7 @@ function Home() {
             <tr>
               <th>Name</th>
               <th>Age</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -20,6 +29,13 @@ function Home() {
                 <tr key={item.Name}>
                   <td>{item.Name}</td>
                   <td>{item.Age}</td>
+                  <td>
+                    <Button onClick={() => alert(item.id)}>Edit</Button>
+                    &nbsp;
+                    <Button onClick={() => handleDelete(item.id)}>
+                      DELETE
+                    </Button>
+                  </td>
                 </tr>
               ))
             ) : (
