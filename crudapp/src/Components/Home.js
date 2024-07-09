@@ -2,14 +2,19 @@ import React, { Fragment } from "react";
 import { Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Employees from "./Employees";
+import { Link, useNavigate } from "react-router-dom";
 
 function Home() {
+  let history = useNavigate();
+
   const handleDelete = (id) => {
     var index = Employees.map(function (e) {
       return e.id;
     }).indexOf(id);
 
     Employees.splice(index, 1);
+
+    history("/");
   };
 
   return (
@@ -30,7 +35,9 @@ function Home() {
                   <td>{item.Name}</td>
                   <td>{item.Age}</td>
                   <td>
-                    <Button onClick={() => alert(item.id)}>Edit</Button>
+                    <Link to={"/edit"}>
+                      <Button onClick={() => alert(item.id)}>Edit</Button>
+                    </Link>
                     &nbsp;
                     <Button onClick={() => handleDelete(item.id)}>
                       DELETE
@@ -45,6 +52,9 @@ function Home() {
             )}
           </tbody>
         </Table>
+        <Link className="d-grid gap-10" to="/create">
+          <Button size="lg">Create</Button>
+        </Link>
       </div>
     </Fragment>
   );
