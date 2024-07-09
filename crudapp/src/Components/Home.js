@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Employees from "./Employees";
@@ -15,13 +15,18 @@ function Home() {
             </tr>
           </thead>
           <tbody>
-            Employees && Employees.length > 0?( Employees.map((item) => (
-            return(
-            <tr>
-              <td>{item.Name}</td>
-              <td>{item.Age}</td>
-            </tr>
-            )) }) : "No data available" }
+            {Employees && Employees.length > 0 ? (
+              Employees.map((item) => (
+                <tr key={item.Name}>
+                  <td>{item.Name}</td>
+                  <td>{item.Age}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="2">No data available</td>
+              </tr>
+            )}
           </tbody>
         </Table>
       </div>
