@@ -19,8 +19,20 @@ function Add() {
             type="text"
             placeholder="Enter Name"
             required
+            onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formAge">
+          <Form.Control
+            type="text"
+            placeholder="Enter Age"
+            required
+            onChange={(e) => setAge(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Button onClick={(e) => handleSubmit(e)} type="submit">
+          Submit
+        </Button>
       </Form>
     </div>
   );
