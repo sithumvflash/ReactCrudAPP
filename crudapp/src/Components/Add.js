@@ -21,6 +21,8 @@ function Add() {
       b = age;
 
     Employees.push({ id: uniqueId, Name: a, Age: b });
+
+    history("/");
   };
 
   return (
