@@ -11,6 +11,18 @@ function Add() {
 
   let history = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const ids = uuid();
+    let uniqueId = ids.slice(0, 8);
+
+    let a = name,
+      b = age;
+
+    Employees.push({ id: uniqueId, Name: a, Age: b });
+  };
+
   return (
     <div>
       <Form className="d-grid gap-2" style={{ margin: "15rem" }}>
