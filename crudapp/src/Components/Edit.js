@@ -26,6 +26,12 @@ function Edit() {
     history("/");
   };
 
+  useEffect(() => {
+    setName(localStorage.getItem("Name"));
+    setAge(localStorage.getItem("Age"));
+    setId(localStorage.getItem("Id"));
+  }, []);
+
   return (
     <div>
       <Form className="d-grid gap-2" style={{ margin: "15rem" }}>
